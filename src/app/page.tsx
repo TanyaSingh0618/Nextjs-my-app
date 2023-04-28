@@ -1,13 +1,26 @@
 import Image from 'next/image'
 import { Inter } from '@next/font/google'
 import styles from './page.module.css'
+import Header from './Components/header';
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function Home() {
+const getData = async () => {
+  const response = await fetch('https://jsonplaceholder.typicode.com/todos/1')
+  const data = await response.json()
+  return data
+}
+
+
+export default async function Home() {
+  const data = await getData()
+  const post = data.title
+
   return (
     <main className={styles.main}>
+      <Header />
       <div className={styles.description}>
+        <h1>{post}</h1>
         <p>
           Get started by editing&nbsp;
           <code className={styles.code}>src/app/page.tsx</code>

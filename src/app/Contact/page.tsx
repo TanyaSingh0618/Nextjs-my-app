@@ -1,4 +1,13 @@
-export default function Contact() {
+'use client'
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 
-    return <div>Contact</div>
+export default function Contact() {
+    const router = useRouter();
+    return <div>
+        <h1>Contact</h1>
+        <Link href="/">Home</Link>
+        <Link href={`/Blog/abc`}>post</Link>
+        <button onClick={() => router.push("/")}>Home</button>
+    </div>
 }
